@@ -1,5 +1,5 @@
 import os
-
+from .routes import register_blueprints
 from flask import Flask
 from .extensions import db, migrate
 
@@ -18,5 +18,5 @@ def create_app():
 
     # Register models with SQLAlchemy
     from . import models
-
+    register_blueprints(app)
     return app
