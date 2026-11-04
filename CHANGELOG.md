@@ -14,3 +14,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 1. registered blueprints in app/init.py
+1. added content to README, will require fine tuning
