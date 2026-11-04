@@ -1,12 +1,10 @@
-from datetime import datetime
-from typing import TYPE_CHECKING
-
-from sqlalchemy import ForeignKey, String, Text, DateTime, func
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.extensions import db
 
-class Part (db.Model):
+
+class Part(db.Model):
     __tablename__ = "parts"
 
     id: Mapped[int] = mapped_column(
@@ -30,6 +28,13 @@ class Part (db.Model):
         nullable=False
     )
 
-    container: Mapped["Stash"] = relationship(
+    # Foreign key to Stash
+    stash_id: Mapped[int | None] = mapped_column(
+        ForeignKey("stashes.id"),
+        nullable=True
+    )
+
+    # Relationship
+    container: Mapped["Stash | None"] = relationship(
         back_populates="parts"
     )

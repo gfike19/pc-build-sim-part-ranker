@@ -1,6 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Welcome, {{ name }}!</h1>
-    <p>This is my personal Flask application.</p>
+
+<h1>Parts</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Part Name</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for part in parts %}
+        <tr>
+            <td>{{ part.id }}</td>
+            <td>{{ part.partName }}</td>
+            <td>{{ part.partScore }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3">No parts found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
