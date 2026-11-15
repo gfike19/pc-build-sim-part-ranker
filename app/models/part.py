@@ -1,7 +1,13 @@
-from sqlalchemy import ForeignKey, String
+from typing import TYPE_CHECKING
+
+from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.extensions import db
+from .associations import stash_parts
+
+if TYPE_CHECKING:
+    from .stash import Stash
 
 
 class Part(db.Model):
@@ -28,13 +34,7 @@ class Part(db.Model):
         nullable=False
     )
 
-    # Foreign key to Stash
-    stash_id: Mapped[int | None] = mapped_column(
-        ForeignKey("stashes.id"),
-        nullable=True
-    )
-
-    # Relationship
-    container: Mapped["Stash | None"] = relationship(
+    stashes: Mapped[list["Stash"]] = relationship(
+        secondary=stash_parts,
         back_populates="parts"
     )

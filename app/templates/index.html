@@ -2,27 +2,13 @@
 
 {% block content %}
 
-<h1>Parts</h1>
+<button>Create New Stash</button>
 
 <table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Part Name</th>
-            <th>Score</th>
-        </tr>
-    </thead>
-
     <tbody>
-        {% for part in parts %}
+        {% for stash in stashes %}
         <tr>
-            <td>{{ part.id }}</td>
-            <td>{{ part.partName }}</td>
-            <td>{{ part.partScore }}</td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="3">No parts found.</td>
+            <td>{{ stash.id }}</td>
         </tr>
         {% endfor %}
     </tbody>
