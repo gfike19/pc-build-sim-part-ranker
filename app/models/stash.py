@@ -18,7 +18,8 @@ class Stash(db.Model):
 
     stashName: Mapped[String] = mapped_column(
         String(255),
-        nullable=False
+        nullable=False,
+        unique=True,
     )
 
     parts: Mapped[list["Part"]] = relationship(

@@ -22,3 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 1. FT002: moved part display to separate html file to test stash code
+
+## 2026-11-17
+
+### Changed
+1. FT002: updated stash to have unique name, stash service to have create method, main and index to handle html page and db operations to create stash, started session work
