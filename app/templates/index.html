@@ -7,13 +7,27 @@
     <label for="stashName"><input type="text" name="stashName" id="stashName"></label>
     <button type="submit" class="btn-primary">Create New Stash</button>
 </form>
-<!-- <table>
+<h1>Stashes</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Stash Name</th>
+        </tr>
+    </thead>
+
     <tbody>
         {% for stash in stashes %}
         <tr>
             <td>{{ stash.id }}</td>
+            <td>{{ stash.stashName }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3">No parts found.</td>
         </tr>
         {% endfor %}
     </tbody>
-</table> -->
+</table>
 {% endblock %}

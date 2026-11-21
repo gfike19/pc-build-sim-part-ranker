@@ -16,3 +16,7 @@ def create_new_stash(stashName: str) -> Stash:
         raise
 
     return stash
+
+def get_all_Stashes() -> list[Stash]:
+    stashes = db.session.scalars(select(Stash).order_by(Stash.id)).all()
+    return stashes
