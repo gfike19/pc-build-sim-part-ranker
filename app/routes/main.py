@@ -6,10 +6,12 @@ main_bp = Blueprint("main", __name__)
 @main_bp.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        stashName = request.form["stashName"]
-        stash_service.create_new_stash(stashName)
-        # msg = "Stash #" + str(stash.id) + " was successfully created!"
-        # Session["msg"] = msg
+        action = request.form.get("action")
+        if action == "create-stash":
+            stashName = request.form["stashName"]
+            stash_service.create_new_stash(stashName)
+            # msg = "Stash #" + str(stash.id) + " was successfully created!"
+            # Session["msg"] = msg
         return redirect(url_for("main.index"))
     if request.method == "GET":
         stashes = stash_service.get_all_Stashes()

@@ -23,8 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 1. FT002: updated stash to have unique name, stash service to have create method, main and index to handle html page and db operations to create stash, started session work
 
-## 2026-11-17
+## 2026-11-21
 ### Changed
 1. FT003: removed references and/or commented out to session for saving items between pages, 
 ### Removed
 1. FT003: removed create stash html file
+### Added
+1. FT003: added action to create stash instead of just form submit

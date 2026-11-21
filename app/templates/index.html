@@ -5,10 +5,10 @@
 <!-- <button class="btn-primary" onclick="location.href='create-stash.html'">Create New Stash</button> -->
 <form method="POST">
     <label for="stashName"><input type="text" name="stashName" id="stashName"></label>
-    <button type="submit" class="btn-primary">Create New Stash</button>
+    <button type="submit" class="btn-success" name="action" value="create-stash">Create New Stash</button>
 </form>
+<hr/>
 <h1>Stashes</h1>
-
 <table>
     <thead>
         <tr>
@@ -20,14 +20,17 @@
     <tbody>
         {% for stash in stashes %}
         <tr>
+            <td><input type="radio" name="stash_id" id="stash_{{ stash.id }}" value="{{ stash.id }}" required></td>
             <td>{{ stash.id }}</td>
             <td>{{ stash.stashName }}</td>
         </tr>
         {% else %}
         <tr>
-            <td colspan="3">No parts found.</td>
+            <td colspan="3">No stash found.</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+    <button type="submit" class="btn-primary" name="action" value="delete-stash">Delete Stash</button>
+</form>
 {% endblock %}
