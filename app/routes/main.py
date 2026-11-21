@@ -12,6 +12,9 @@ def index():
             stash_service.create_new_stash(stashName)
             # msg = "Stash #" + str(stash.id) + " was successfully created!"
             # Session["msg"] = msg
+        elif action == "delete-stash":
+            stash_id = request.form.get("stash_id", type=int)
+            stash_service.del_stash_by_id(stash_id)
         return redirect(url_for("main.index"))
     if request.method == "GET":
         stashes = stash_service.get_all_Stashes()
