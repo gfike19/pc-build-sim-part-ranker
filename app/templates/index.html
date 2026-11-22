@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{{ parts }}
 <form method="POST">
     <label for="stashName">New Stash Name: </label>
     <input type="text" name="stashName" id="stashName">
@@ -30,6 +31,7 @@
         {% endfor %}
     </tbody>
 </table>
+    <button type="submit" class="btn-dark" name="action" value="add-parts">Add Parts to Stash</button>
     <button type="submit" class="btn-danger" name="action" value="delete-stash">Delete Stash</button>
 </form>
 {% endblock %}

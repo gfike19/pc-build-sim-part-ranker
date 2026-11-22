@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>GPUs</h2>
+
+<table>
+
+    <tbody>
+        {% for part in gpus %}
+        <tr>
+            <td>{{ part.partName }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>CPUs</h2>
+
+<table>
+    <tbody>
+        {% for part in cpus %}
+        <tr>
+            <td>{{ part.partName }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
