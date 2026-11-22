@@ -30,3 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 1. FT003: removed create stash html file
 ### Added
 1. FT003: added action to create stash instead of just form submit
+
+## 2026-11-22
+### Changed
+1. FT003: updated stash service to have get by id method, delte by id uses it, fixed issue in html where delete wasn't working, removed excess code from main and verified exception raised by service works when invalid id present

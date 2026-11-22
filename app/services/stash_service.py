@@ -21,9 +21,14 @@ def get_all_Stashes() -> list[Stash]:
     stashes = db.session.scalars(select(Stash).order_by(Stash.id)).all()
     return stashes
 
-def del_stash_by_id(id: int) -> Stash:
+def get_stash_by_id(id: int) -> Stash:
     stash = db.session.get(Stash, id)
     if stash is None:
         raise ValueError(f"Stash with ID {id} does not exist.")
+    else:
+        return stash
+
+def del_stash_by_id(id: int) -> Stash:
+    stash = get_stash_by_id(id)
     db.session.delete(stash)
     db.session.commit()
