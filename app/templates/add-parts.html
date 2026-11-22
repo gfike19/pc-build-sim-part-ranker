@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<form method="POST">
 <h2>GPUs</h2>
 
 <table>
 
     <tbody>
-        {% for part in gpus %}
+        {% for gpu in gpus %}
         <tr>
-            <td>{{ part.partName }}</td>
+            <td><input type="checkbox" name="gpu_id" id="gpu_{{ gpu.id }}" value="{{ gpu.id }}"></td>
+            <td>{{ gpu.partName }}</td>
         </tr>
         {% endfor %}
     </tbody>
@@ -19,11 +20,13 @@
 
 <table>
     <tbody>
-        {% for part in cpus %}
+        {% for cpu in cpus %}
         <tr>
-            <td>{{ part.partName }}</td>
+            <td><input type="checkbox" name="cpu_id" id="cpu_{{ cpu.id }}" value="{{ cpu.id }}"></td>
+            <td>{{ cpu.partName }}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+</form>
 {% endblock %}
