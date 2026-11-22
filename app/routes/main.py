@@ -16,4 +16,4 @@ def index():
         return redirect(url_for("main.index"))
     if request.method == "GET":
         stashes = stash_service.get_all_Stashes()
-        return render_template("index.html", stashes=stashes, stash=stash)
+        return render_template("index.html", stashes=stashes)

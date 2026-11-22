@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <form method="POST">
-    <label for="stashName"><input type="text" name="stashName" id="stashName"></label>
+    <label for="stashName">New Stash Name: </label>
+    <input type="text" name="stashName" id="stashName">
     <button type="submit" class="btn-success" name="action" value="create-stash">Create New Stash</button>
+    <button type="reset" class="btn-secondary">Clear</button>
 <hr/>
 <h1>Stashes</h1>
 <table>
@@ -24,7 +25,7 @@
         </tr>
         {% else %}
         <tr>
-            <td colspan="3">No stash found.</td>
+            <td colspan="3">No stashes found.</td>
         </tr>
         {% endfor %}
     </tbody>

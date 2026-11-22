@@ -34,3 +34,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 2026-11-22
 ### Changed
 1. FT003: updated stash service to have get by id method, delte by id uses it, fixed issue in html where delete wasn't working, removed excess code from main and verified exception raised by service works when invalid id present
+### Removed
+1. FT003: removed separate create stash html
