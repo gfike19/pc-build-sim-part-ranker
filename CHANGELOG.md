@@ -36,3 +36,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 1. FT003: updated stash service to have get by id method, delte by id uses it, fixed issue in html where delete wasn't working, removed excess code from main and verified exception raised by service works when invalid id present
 ### Removed
 1. FT003: removed separate create stash html
+
+## 2026-11-23
+### Changed
+1. FT004: updated add part html and routes to view edit stash
+###
+1. FT004: added ability to add parts to stash, made changes to stash service and main.py

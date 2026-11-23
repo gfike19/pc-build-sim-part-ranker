@@ -37,3 +37,4 @@ def add_parts(stash_id, part_ids):
     stash = get_stash_by_id(stash_id)
     parts = db.session.scalars(db.select(Part).where(Part.id.in_(part_ids))).all()
     stash.parts.extend(parts)
+    db.session.commit()
