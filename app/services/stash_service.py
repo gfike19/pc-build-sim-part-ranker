@@ -1,6 +1,6 @@
 from sqlalchemy import select
 from app.extensions import db
-from app.models import Stash
+from app.models import Stash, Part
 
 def create_new_stash(stashName: str) -> Stash:
     name = stashName.strip()
@@ -32,3 +32,8 @@ def del_stash_by_id(id: int) -> Stash:
     stash = get_stash_by_id(id)
     db.session.delete(stash)
     db.session.commit()
+
+def add_parts(stash_id, part_ids):
+    stash = get_stash_by_id(stash_id)
+    parts = db.session.scalars(db.select(Part).where(Part.id.in_(part_ids))).all()
+    stash.parts.extend(parts)

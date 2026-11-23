@@ -6,7 +6,7 @@
     <li>{{ each }}</li>
 </ul>
 {% endfor %}
-<a href="{{ url_for('main.index') }}" class="btn btn-dark">Back</a>
+<a href="{{ url_for('main.index') }}" class="btn-dark">Back</a>
 <form method="POST">
 <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#gpus" aria-expanded="false" aria-controls="gpus">
     <span class="fs-2">GPUs</span>
@@ -39,7 +39,7 @@
                 {% for cpu in cpus %}
                 <tr>
                     <td>
-                        <input type="checkbox" name="cpu_id" id="cpu_{{ cpu.id }}" value="{{ cpu.id }}">
+                        <input type="checkbox" name="cpu_id" id="cpu_id" value="{{ cpu.id }}">
                     </td>
                     <td>{{ cpu.partName }}</td>
                 </tr>
