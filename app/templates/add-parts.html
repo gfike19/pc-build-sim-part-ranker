@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-{{ parts }}
+{% for each in test %}
+<ul>
+    <li>{{ each }}</li>
+</ul>
+{% endfor %}
 <a href="{{ url_for('main.index') }}" class="btn btn-dark">Back</a>
 <form method="POST">
 <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#gpus" aria-expanded="false" aria-controls="gpus">
@@ -15,7 +19,7 @@
                 {% for gpu in gpus %}
                 <tr>
                     <td>
-                        <input type="checkbox" name="gpu_id" id="gpu_{{ gpu.id }}" value="{{ gpu.id }}" required>
+                        <input type="checkbox" name="gpu_id" id="gpu_id" value="{{ gpu.id }}">
                     </td>
                     <td>{{ gpu.partName }}</td>
                 </tr>
@@ -35,7 +39,7 @@
                 {% for cpu in cpus %}
                 <tr>
                     <td>
-                        <input type="checkbox" name="cpu_id" id="cpu_{{ cpu.id }}" value="{{ cpu.id }}" required>
+                        <input type="checkbox" name="cpu_id" id="cpu_{{ cpu.id }}" value="{{ cpu.id }}">
                     </td>
                     <td>{{ cpu.partName }}</td>
                 </tr>

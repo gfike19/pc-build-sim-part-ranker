@@ -29,8 +29,10 @@ def index():
 
 @main_bp.route("/add-parts/<int:stash_id>", methods=["GET", "POST"])
 def addParts(stash_id):
+    cpus = part_service.get_all_cpus()
+    gpus = part_service.get_all_gpus()
     if request.method == "GET":
-        cpus = part_service.get_all_cpus()
-        gpus = part_service.get_all_gpus()
         return render_template("add-parts.html", cpus=cpus, gpus=gpus)
-    # if request.method == "POST":
+    if request.method == "POST":
+        test = request.form.getlist("gpu_id")
+        return render_template("add-parts.html", cpus=cpus, gpus=gpus, test=test)
