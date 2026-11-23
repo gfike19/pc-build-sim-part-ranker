@@ -2,31 +2,45 @@
 
 {% block content %}
 <form method="POST">
-<h2>GPUs</h2>
+<button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#gpus" aria-expanded="false" aria-controls="gpus">
+    <span class="fs-2">GPUs</span>
+</button>
 
-<table>
+<div class="collapse" id="gpus">
+    <div class="card card-body">
+        <table>
+            <tbody>
+                {% for gpu in gpus %}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="gpu_id" id="gpu_{{ gpu.id }}" value="{{ gpu.id }}">
+                    </td>
+                    <td>{{ gpu.partName }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#cpus" aria-expanded="false" aria-controls="cpus">
+    <span class="fs-2">CPUs</span>
+</button>
 
-    <tbody>
-        {% for gpu in gpus %}
-        <tr>
-            <td><input type="checkbox" name="gpu_id" id="gpu_{{ gpu.id }}" value="{{ gpu.id }}"></td>
-            <td>{{ gpu.partName }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<h2>CPUs</h2>
-
-<table>
-    <tbody>
-        {% for cpu in cpus %}
-        <tr>
-            <td><input type="checkbox" name="cpu_id" id="cpu_{{ cpu.id }}" value="{{ cpu.id }}"></td>
-            <td>{{ cpu.partName }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="collapse" id="cpus">
+    <div class="card card-body">
+        <table>
+            <tbody>
+                {% for cpu in cpus %}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="cpu_id" id="cpu_{{ cpu.id }}" value="{{ cpu.id }}">
+                    </td>
+                    <td>{{ cpu.partName }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 </form>
 {% endblock %}
