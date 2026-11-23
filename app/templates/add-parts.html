@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+{{ parts }}
+<a href="{{ url_for('main.index') }}" class="btn btn-dark">Back</a>
 <form method="POST">
 <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#gpus" aria-expanded="false" aria-controls="gpus">
     <span class="fs-2">GPUs</span>
@@ -13,7 +15,7 @@
                 {% for gpu in gpus %}
                 <tr>
                     <td>
-                        <input type="checkbox" name="gpu_id" id="gpu_{{ gpu.id }}" value="{{ gpu.id }}">
+                        <input type="checkbox" name="gpu_id" id="gpu_{{ gpu.id }}" value="{{ gpu.id }}" required>
                     </td>
                     <td>{{ gpu.partName }}</td>
                 </tr>
@@ -33,7 +35,7 @@
                 {% for cpu in cpus %}
                 <tr>
                     <td>
-                        <input type="checkbox" name="cpu_id" id="cpu_{{ cpu.id }}" value="{{ cpu.id }}">
+                        <input type="checkbox" name="cpu_id" id="cpu_{{ cpu.id }}" value="{{ cpu.id }}" required>
                     </td>
                     <td>{{ cpu.partName }}</td>
                 </tr>
@@ -42,5 +44,7 @@
         </table>
     </div>
 </div>
+<button class="btn-primary" type="submit" name="add-parts-to-stash" id="add-parts-to-stash">Add Parts to Stash</button>
+<button type="reset" class="btn-secondary">Clear</button>
 </form>
 {% endblock %}
