@@ -32,11 +32,12 @@ def index():
 def viewEditStash(stash_id):
     cpus = part_service.get_all_cpus()
     gpus = part_service.get_all_gpus()
+    parts = stash_service.get_all_parts_by_stash(stash_id=stash_id)
     if request.method == "GET":
-        return render_template("view-edit-stash.html", cpus=cpus, gpus=gpus)
+        return render_template("view-edit-stash.html", cpus=cpus, gpus=gpus, parts=parts)
     if request.method == "POST":
         gpus = request.form.getlist("gpu_id", type=int)
         cpus = request.form.getlist("cpu_id", type=int)
         part_ids = gpus + cpus
         stash_service.add_parts(stash_id=stash_id, part_ids=part_ids)
-        return render_template("view-edit-stash.html", cpus=cpus, gpus=gpus)
+        return redirect(url_for("main.viewEditStash", stash_id=stash_id))
