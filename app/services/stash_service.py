@@ -43,3 +43,15 @@ def add_parts(stash_id: int, part_ids: list[int]):
 def get_all_parts_by_stash(stash_id:int) -> list[Part]:
     stash = get_stash_by_id(stash_id)
     return stash.parts
+
+# -> doesn't enforce return type, just helps people reading code
+def get_parts_not_in_stash(stash_id: int) -> list[Part]:
+
+# tilda below equals NOT operator
+    stmt = {
+        select(Part)
+        .where(~Part.stashes.any(Stash.id == stash_id))
+    }
+
+# scalar = first result, scalars = first selected values
+    return db.session.scalars(stmt).all()

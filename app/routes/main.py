@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from app.services import part_service, stash_service
+from app.services import stash_service
 
 main_bp = Blueprint("main", __name__)
 
@@ -30,11 +30,12 @@ def index():
 
 @main_bp.route("/view-edit-stash/<int:stash_id>", methods=["GET", "POST"])
 def viewEditStash(stash_id):
-    cpus = part_service.get_all_cpus()
-    gpus = part_service.get_all_gpus()
-    parts = stash_service.get_all_parts_by_stash(stash_id=stash_id)
+    non_stashed_parts = stash_service.get_parts_not_in_stash(stash_id)
+    gpus = [part for part in non_stashed_parts if part.gpu]
+    cpus = [part for part in non_stashed_parts if part.cpu]
+    stashed_parts = stash_service.get_all_parts_by_stash(stash_id=stash_id)
     if request.method == "GET":
-        return render_template("view-edit-stash.html", cpus=cpus, gpus=gpus, parts=parts)
+        return render_template("view-edit-stash.html", cpus=cpus, gpus=gpus, stashed_parts=stashed_parts)
     if request.method == "POST":
         gpus = request.form.getlist("gpu_id", type=int)
         cpus = request.form.getlist("cpu_id", type=int)

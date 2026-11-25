@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% for part in parts %}
+{% for part in stashed_parts %}
 <ul>
     <li>{{ part.partName }}</li>
 </ul>
