@@ -40,5 +40,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 2026-11-23
 ### Changed
 1. FT004: updated add part html and routes to view edit stash
-###
+### Added
 1. FT004: added ability to add parts to stash, made changes to stash service and main.py
+1. FT005: can view parts in current stash on view edit stash page, can also add parts to current stash and available parts are updated

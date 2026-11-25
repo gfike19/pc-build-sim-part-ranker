@@ -14,3 +14,7 @@ def get_all_cpus() -> list[Part]:
 def get_all_gpus() -> list[Part]:
     parts = db.session.scalars(select(Part).where(Part.gpu == True)).all()
     return parts
+
+# underscore in _in is used to differentiate between python and sql keywords
+def get_parts_by_ids(part_ids: list[int]) -> list[Part]:
+    return db.session.scalars(select(Part).where(Part.id.in_(part_ids))).all()

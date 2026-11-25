@@ -48,10 +48,8 @@ def get_all_parts_by_stash(stash_id:int) -> list[Part]:
 def get_parts_not_in_stash(stash_id: int) -> list[Part]:
 
 # tilda below equals NOT operator
-    stmt = {
-        select(Part)
-        .where(~Part.stashes.any(Stash.id == stash_id))
-    }
+    stmt = select(Part).where(~Part.stashes.any(Stash.id == stash_id))
+    
 
 # scalar = first result, scalars = first selected values
     return db.session.scalars(stmt).all()
